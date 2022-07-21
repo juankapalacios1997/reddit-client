@@ -1,57 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import ReactSwitch from 'react-switch';
+import { useState } from 'react';
 import './App.css';
+import { Home } from "./features/Home/Home";
+import { Header } from "./features/Header/Header";
+import { createContext } from 'react';
+import { Subreddits } from "./features/subreddits/Subreddits"
+
+export const ThemeContext = createContext(null);
 
 function App() {
+  const [theme, setTheme] = useState("light");
+  const toggleTheme = () => setTheme((curr) => curr === "light" ? "dark" : "light")
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <ThemeContext.Provider value={{theme, toggleTheme}} >
+      <div className= "App" id={theme}>
+        <div>
+          <Header style={theme}/>
+        </div>
+        <div>
+          <Home />  
+        </div>
+        <div className="subreditts" >
+          <Subreddits />
+        </div>
+        <div className="Switch" />
+        <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
+      </div>
+      </ThemeContext.Provider>
   );
 }
 
