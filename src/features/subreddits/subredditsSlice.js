@@ -18,7 +18,7 @@ const subredditsSlice = createSlice({
     },
     getSubredditsSuccess(state, action) {
         state.isLoading = false;
-        state.subreddits = action.payload;
+        state.subreddits.push(action.payload);
     },
     changeActiveSubreddit(state, action) {
         state.activeSubreddit = action.payload;
@@ -34,6 +34,7 @@ export const {
   getSubredditsFailed,
   getSubredditsSuccess,
   startGetSubreddits,
+  changeActiveSubreddit,
 } = subredditsSlice.actions;
 
 export default subredditsSlice.reducer;
@@ -50,3 +51,4 @@ export const fetchSubreddits = () => async (dispatch) => {
 };
 
 export const selectSubreddits = (state) => state.subreddits.subreddits;
+export const selectActiveSubreddit = (state) => state.subreddits.activeSubreddit;
