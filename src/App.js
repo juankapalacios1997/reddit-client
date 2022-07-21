@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import ReactSwitch from 'react-switch';
 import { useState } from 'react';
 import './App.css';
@@ -14,21 +15,23 @@ function App() {
   const toggleTheme = () => setTheme((curr) => curr === "light" ? "dark" : "light")
 
   return (
-    <ThemeContext.Provider value={{theme, toggleTheme}} >
-      <div className= "App" id={theme}>
-        <div>
-          <Header style={theme}/>
+    <Router>
+      <ThemeContext.Provider value={{theme, toggleTheme}} >
+        <div className= "App" id={theme}>
+          <div>
+            <Header style={theme}/>
+          </div>
+          <div>
+            <Home />  
+          </div>
+          <div className="subreditts" >
+            <Subreddits />
+          </div>
+          <div className="Switch" />
+          <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
         </div>
-        <div>
-          <Home />  
-        </div>
-        <div className="subreditts" >
-          <Subreddits />
-        </div>
-        <div className="Switch" />
-        <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
-      </div>
-      </ThemeContext.Provider>
+        </ThemeContext.Provider>
+      </Router>
   );
 }
 

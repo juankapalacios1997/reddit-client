@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchSubreddits, selectSubreddits, selectActiveSubreddit } from "./subredditsSlice";
+import { fetchSubreddits, selectSubreddits, selectActiveSubreddit, changeActiveSubreddit } from "./subredditsSlice";
+import { Link } from 'react-router-dom';
 //import './Subreddits.css';
 
 export const Subreddits = () => {
@@ -17,10 +18,15 @@ export const Subreddits = () => {
       <h2>Subreddits</h2>
       <ul className="subreddits-list">
         {subreddits.map((subreddit) => (
-          <li
-            key={subreddit.id} >
-            
-          </li>
+            <Link to="/" key={subreddit.id}>
+                <li 
+                    onClick={() => dispatch(changeActiveSubreddit(subreddit.url))}
+                    className={activeSub === subreddit.url === "selected-subreddit"}
+                >
+                    <img src={subreddit.icon} alt="subreddit-icon"/>
+                    {subreddit.name}
+                </li>
+            </Link>
         ))}
       </ul>
     </div>

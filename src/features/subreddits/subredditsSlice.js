@@ -18,7 +18,7 @@ const subredditsSlice = createSlice({
     },
     getSubredditsSuccess(state, action) {
         state.isLoading = false;
-        state.subreddits.push(action.payload);
+        state.subreddits = (action.payload);
     },
     changeActiveSubreddit(state, action) {
         state.activeSubreddit = action.payload;
