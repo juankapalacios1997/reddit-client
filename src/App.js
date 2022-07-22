@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import ReactSwitch from 'react-switch';
 import { useState } from 'react';
 import './App.css';
-import { Home } from "./features/posts/Posts";
+import { Posts } from "./features/posts/Posts";
 import { Header } from "./features/Header/Header";
 import { createContext } from 'react';
 import { Subreddits } from "./features/subreddits/Subreddits"
@@ -30,7 +30,7 @@ function App() {
               <Subreddits logo={logo} /> 
             </div>
             <div className="home">
-              <Home />
+              <Posts />
             </div>
           </div>
           <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
