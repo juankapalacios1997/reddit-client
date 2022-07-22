@@ -1,12 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getSubredditPosts } from '../api/reddit';
+import { getSubredditPosts } from '../../api/reddit';
 
 const initialState = {
   posts: [],
   error: false,
   isLoading: false,
-  searchTerm: '',
-  selectedSubreddit: '/r/pics/',
+  activeSubreddit: "/r/Home",
 };
 
 const postsSlice = createSlice({
@@ -28,6 +27,9 @@ const postsSlice = createSlice({
             state.isLoading = false;
             state.error = true;
         },
+        changeActiveSubreddit(state, action) {
+            state.activeSubreddit = action.payload;
+        },
     }
 });
 
@@ -35,7 +37,8 @@ export const {
     setPosts,
     startGetPosts,
     getPostsSuccess,
-    getPostsFailed
+    getPostsFailed,
+    changeActiveSubreddit
 } = postsSlice.actions;
 
 export default postsSlice.reducer;
@@ -49,6 +52,8 @@ export const fetchPosts = (subreddit) => async (dispatch) => {
       dispatch(getPostsFailed());
     }
 };
+
+export const { posts, error, isLoading, activeSubreddit } = (state) => state.posts;
 
 
 

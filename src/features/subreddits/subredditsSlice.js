@@ -3,7 +3,6 @@ import { getSubreddits } from '../../api/reddit';
 
 const initialState = {
   subreddits: [],
-  activeSubreddit: "r/Home",
   error: false,
   isLoading: false,
 };
@@ -20,9 +19,6 @@ const subredditsSlice = createSlice({
         state.isLoading = false;
         state.subreddits = (action.payload);
     },
-    changeActiveSubreddit(state, action) {
-        state.activeSubreddit = action.payload;
-    },
     getSubredditsFailed(state) {
       state.isLoading = false;
       state.error = true;
@@ -34,7 +30,6 @@ export const {
   getSubredditsFailed,
   getSubredditsSuccess,
   startGetSubreddits,
-  changeActiveSubreddit,
 } = subredditsSlice.actions;
 
 export default subredditsSlice.reducer;

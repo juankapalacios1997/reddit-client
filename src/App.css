@@ -6,14 +6,6 @@
   text-align: center;
 }
 
-.App #light {
-  color: black;
-}
-
-.App #dark {
-  color: white;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
