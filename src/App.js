@@ -3,10 +3,14 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import ReactSwitch from 'react-switch';
 import { useState } from 'react';
 import './App.css';
-import { Home } from "./features/Home/Home";
+import { Home } from "./features/posts/Posts";
 import { Header } from "./features/Header/Header";
 import { createContext } from 'react';
 import { Subreddits } from "./features/subreddits/Subreddits"
+
+import logo from "./reddit-logo-error.png";
+import logoDark from "./reddit-dark-logo.png";
+import logoLight from "./reddit-logo.png";
 
 export const ThemeContext = createContext(null);
 
@@ -19,15 +23,16 @@ function App() {
       <ThemeContext.Provider value={{theme, toggleTheme}} >
         <div className= "App" id={theme}>
           <div>
-            <Header style={theme}/>
+            <Header logo={theme === "light" ? logoLight : logoDark} />
           </div>
-          <div>
-            <Home />  
+          <div className="body">
+            <div className="subreditts">
+              <Subreddits logo={logo} /> 
+            </div>
+            <div className="home">
+              <Home />
+            </div>
           </div>
-          <div className="subreditts" >
-            <Subreddits />
-          </div>
-          <div className="Switch" />
           <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
         </div>
         </ThemeContext.Provider>

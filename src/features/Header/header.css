@@ -4,13 +4,22 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(6, 1f);
+
   }
+
+#light .header {
+    border-bottom: 0.05rem solid black;
+}
+
+#dark .header {
+    border-bottom: 0.05rem solid white;
+}
 
 .logo-container {
     display: flex;
     width: 15rem;
     height: 3rem;
-    grid-column: 1;
+    grid-column: 1/1;
     display: flex;
     justify-content: center;
     justify-self: center;
@@ -28,7 +37,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    grid-column: 2/5;
+    grid-column: 2/6;
 }
 
 .search {

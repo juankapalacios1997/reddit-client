@@ -1,14 +1,12 @@
 import "./header.css";
-import logoDark from "../../reddit-dark-logo.png";
-import logoLight from "../../reddit-logo.png"
 
 export const Header = (props) => {
-    const { style } = props;
+    const { logo } = props;
 
     return (
         <div className="header" >
             <div className="logo-container">
-                <img src={style === "light" ? logoLight : logoDark} className="logo" alt="logo" />
+                <img src={logo} className="logo" alt="logo" />
             </div>
             <div className="searchbar-container">
                 <form className="search" onSubmit={[]}>
