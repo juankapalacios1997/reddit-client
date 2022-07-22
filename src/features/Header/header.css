@@ -1,4 +1,5 @@
 .header {
+    position: fixed;
     height: 6rem;
     width: 100%;
     margin: 0 auto;
@@ -9,10 +10,14 @@
 
 #light .header {
     border-bottom: 0.05rem solid black;
+    background-color: white ;
+    color: black;
 }
 
 #dark .header {
+    color: white;
     border-bottom: 0.05rem solid white;
+    background-color: rgb(53, 53, 53);
 }
 
 .logo-container {

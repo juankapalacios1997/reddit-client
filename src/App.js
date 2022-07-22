@@ -22,7 +22,7 @@ function App() {
     <Router>
       <ThemeContext.Provider value={{theme, toggleTheme}} >
         <div className= "App" id={theme}>
-          <div>
+          <div className="header">
             <Header logo={theme === "light" ? logoLight : logoDark} />
           </div>
           <div className="body">
