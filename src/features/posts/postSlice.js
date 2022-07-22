@@ -53,7 +53,7 @@ export const fetchPosts = (subreddit) => async (dispatch) => {
     }
 };
 
-export const { posts, error, isLoading, activeSubreddit } = (state) => state.posts;
+export const selectPosts = (state) => state.redditPosts.posts
 
 
 

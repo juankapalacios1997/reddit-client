@@ -1,7 +1,12 @@
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux/es/exports";
+
 import "./header.css";
 
 export const Header = (props) => {
     const { logo } = props;
+
+    const dispatch = useDispatch();
 
     return (
         <div className="header" >
