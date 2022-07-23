@@ -8,8 +8,10 @@ import {
 } from './postSlice';
 
 import { selectFilteredPosts } from '../Header/searchTerm/searchTermSlice';
+import { Likes } from './likes/Likes';
 
 import './posts.css';
+
 
 
 
@@ -53,6 +55,9 @@ export const Posts = () => {
                         <p>{post.selftext.substring(0, 600) + (post.selftext.length > 600 ? " [...]" : "")}</p>
                         {post.selftext.length > 600 ? <p className="read-more">read more...</p> : null}
                         <img src={post.url} onError={(e) => e.target.style.display = "none"} alt={post.title}/>
+                    </div>
+                    <div>
+                      <Likes ups={post.ups}/>
                     </div>
                 </div>
             </section>))}
