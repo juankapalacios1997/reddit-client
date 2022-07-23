@@ -7,13 +7,16 @@ import {
     changeActiveSubreddit,
 } from './postSlice';
 
+import { selectFilteredPosts } from '../Header/searchTerm/searchTermSlice';
+
 import './posts.css';
 
 
 
 export const Posts = () => {
     const postsState = useSelector((state) => state.redditPosts);
-  const { posts, isLoading, error, activeSubreddit } = postsState;
+    const { isLoading, error, activeSubreddit } = postsState;
+    const posts = useSelector(selectFilteredPosts);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -45,7 +48,7 @@ export const Posts = () => {
         {posts.map(post => (
             <section className="post-container" key={post.id}>
                 <div className="post-body">
-                    <div className="individual-post" onClick={[]}>
+                    <div className="individual-post" onClick={[() => dispatch(changeActiveSubreddit(post.name))]}>
                         <h2>{post.title}</h2>
                         <p>{post.selftext.substring(0, 600) + (post.selftext.length > 600 ? " [...]" : "")}</p>
                         {post.selftext.length > 600 ? <p className="read-more">read more...</p> : null}

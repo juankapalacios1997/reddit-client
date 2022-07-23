@@ -1,12 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux/es/exports";
+import { setSearchTerm } from './searchTerm/searchTermSlice';
 
 import "./header.css";
 
 export const Header = (props) => {
     const { logo } = props;
-
     const dispatch = useDispatch();
+    const [searchTermLocal, setSearchTermLocal] = useState('');
+    const searchTerm = useSelector((state) => state.searchTerm.searchTerm);
+
+    const onSearchTermChange = (e) => {
+        setSearchTermLocal(e.target.value);
+      };
+    
+      useEffect(() => {
+        setSearchTermLocal(searchTerm);
+      }, [searchTerm]);
+    
+      const onSearchTermSubmit = (e) => {
+        e.preventDefault();
+        dispatch(setSearchTerm(searchTermLocal));
+      };
 
     return (
         <div className="header" >
@@ -14,15 +29,15 @@ export const Header = (props) => {
                 <img src={logo} className="logo" alt="logo" />
             </div>
             <div className="searchbar-container">
-                <form className="search" onSubmit={[]}>
+                <form className="search" onSubmit={onSearchTermSubmit}>
                     <input
                         type="text"
                         placeholder="Search"
-                        value={[]}
-                        onChange={[]}
+                        value={searchTermLocal}
+                        onChange={onSearchTermChange}
                         aria-label="Search posts"
                     />
-                    <button type="submit" onClick={[]} aria-label="Search">
+                    <button type="submit" onClick={onSearchTermSubmit} aria-label="Search">
                         Search
                     </button>
                 </form>
