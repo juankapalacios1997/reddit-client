@@ -8,6 +8,7 @@ import {
 } from './postSlice';
 
 import { selectFilteredPosts } from '../Header/searchTerm/searchTermSlice';
+import { PostInfo } from './postInfo/PostInfo';
 import { Likes } from './likes/Likes';
 
 import './posts.css';
@@ -57,6 +58,7 @@ export const Posts = () => {
                         <img src={post.url} onError={(e) => e.target.style.display = "none"} alt={post.title}/>
                     </div>
                     <div>
+                      <PostFooter />
                       <Likes ups={post.ups}/>
                     </div>
                 </div>
