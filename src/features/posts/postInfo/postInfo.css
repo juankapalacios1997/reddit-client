@@ -1,0 +1,15 @@
+.post-info-container {
+    width: 80%;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.post-info-list {
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+}

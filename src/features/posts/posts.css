@@ -11,7 +11,6 @@
 }
 
 .post-body {
-    border: 1px solid red;
     width: 90%;
     font-size: 1rem;
     text-align: center;
@@ -23,7 +22,6 @@
 
 
 .individual-post {
-    border: 1px solid red;
     width:100%;
     display: block;
     text-align: center;
@@ -32,15 +30,31 @@
 }
 
 .individual-post h2 {
-    border: 1px solid red;
     font-size: 1.5rem;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
 }
 
 .individual-post img {
-    border: 1px solid red;
     width: 80%;
     height: auto;
     object-fit: scale-down;
+}
+
+.individual-post span {
+    font-weight: bold;
+    
+}
+
+.individual-post span:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.post-footer {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    color: white;
+    font-size: 1.5rem;
 }
