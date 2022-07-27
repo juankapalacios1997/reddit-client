@@ -26,7 +26,7 @@ export const Posts = () => {
     dispatch(fetchPosts(activeSubreddit));
     }, [dispatch, activeSubreddit]);
 
-    const toggleReadMore = (index) => {
+    const toggleReadMore = () => {
       setIsReadMore(!isReadMore);
     };
 
@@ -73,11 +73,11 @@ export const Posts = () => {
                         created={post.created_utc}
                         />
                       <Likes ups={post.ups}/>
-                      <div className={isReadMore ? 'showing-coments' : 'hidden-comments'}>
-                        <Comments post={post} postPermalink={post.permalink} postComments={post.num_comments}/>
-                      </div>
                     </div>
-                </div>
+                    <div className={isReadMore ? 'showing-coments' : 'hidden-comments'}>
+                        <Comments post={post} postPermalink={post.permalink} postComments={post.num_comments}/>
+                    </div>
+                  </div>
             </section>
           ))}
     </div>

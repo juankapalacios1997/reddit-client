@@ -1,5 +1,5 @@
-import { createSlice, createSelector } from '@reduxjs/toolkit';
-import { getSubredditPosts, getPostComments } from '../api/reddit';
+import { createSlice } from '@reduxjs/toolkit';
+import { getPostComments } from '../../../api/reddit';
 
 
 const commentsSlice = createSlice({
@@ -10,23 +10,19 @@ const commentsSlice = createSlice({
         errorComments: false,
     },
     reducers: {
-        startGetComments(state, action) {
+        startGetComments(state) {
         // If we're hiding comment, don't fetch the comments.
-            state.posts[action.payload].showingComments = !state.posts[action.payload]
-            .showingComments;
-            if (!state.posts[action.payload].showingComments) {
-                return;
-            }
-            state.posts[action.payload].loadingComments = true;
-            state.posts[action.payload].error = false;
+            state.loadingComments = true;
+            state.errorComments = false;
         },
         getCommentsSuccess(state, action) {
-            state.posts[action.payload.index].loadingComments = false;
-            state.posts[action.payload.index].comments = action.payload.comments;
+            state.loadingComments = false;
+            state.errorComments = false;
+            state.comments.push(action.payload.comments);
         },
-        getCommentsFailed(state, action) {
-            state.posts[action.payload].loadingComments = false;
-            state.posts[action.payload].error = true;
+        getCommentsFailed(state) {
+            state.loadingComments = false;
+            state.errorComments = true;
         },
     }
 });
