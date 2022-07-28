@@ -20,7 +20,7 @@ export const Comments = (props) => {
                         <p>{comment.body}</p>
                         <div className='comment-footer'>
                             <p className='comment-author'>{comment.author}</p>
-                            <p className={'comment-date'}>{dateCalculator(comment.created_utc)}</p>
+                            <p className='comment-date'>{dateCalculator(comment.created_utc)}</p>
                         </div>
                     </div>
 
@@ -30,10 +30,9 @@ export const Comments = (props) => {
     
     return (
         <div className='comments-container'>
-            <div className='comments-header' />
-            <div>
-            <p>{`Comments: ${numComments} `}</p>
-            <p><span className={'show-comments'} onClick={onToggleComments}>{!showingComments ? 'Show comments' : 'Hide comments'}</span></p>
+            <div className='comments-header' >
+                <p>{`Comments: ${numComments} `}</p>
+                <p><span className={'show-comments'} onClick={onToggleComments}>{!showingComments ? 'Show comments' : 'Hide comments'}</span></p>
             </div>
             <div className={showingComments ? 'comments-displayed' : 'comments-hidden'}>
                 {comments}

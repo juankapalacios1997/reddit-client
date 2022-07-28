@@ -73,7 +73,7 @@ export const Posts = () => {
                         author={post.author}
                         created={post.created_utc}
                         />
-                      <Likes ups={post.ups}/>
+                      <Likes className='likes' ups={post.ups}/>
                     </div>
                     <div className='comments'>          
                         <Comments permalink={post.permalink} numComments={post.num_comments} />

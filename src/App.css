@@ -12,49 +12,54 @@
 }
 
 .body {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-direction: row;
 }
 
-.subreditts {
-  grid-column: 1;
-}
-
-.home {
-  grid-column: 2/4;
+.subreddits {
+  width: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
 }
 
 #light {
-  color: rgb(0, 0, 0,);
   background-color: #CCCCCC;
 }
 
 #dark {
-  color: rgb(0, 0, 0,);
   background-color:  rgb(53, 53, 53);
 }
 
-#light a {
-  color: rgb(0, 0, 0);
-  text-decoration: underline;
+.ReactSwitch {
+  margin: 1rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
 }
 
-#dark a {
-  color: rgb(255, 255, 255);
-  text-decoration: underline;
+#light .ReactSwitch {
+  border: 2px solid black;
+  border-radius: 0.5rem;
 }
 
-#light a:hover {
-  color: orangered;
-  text-decoration: none;
+#dark .ReactSwitch {
+  background-color: rgb(53, 53, 53);
+  border: 2px solid white;
+  border-radius: 0.5rem;
 }
 
-#dark a:hover {
-  color: orangered;
-  text-decoration: none;
+#light .ReactSwitch span {
+  font-weight: bold;
+  color: black;
 }
 
-
+#dark .ReactSwitch span {
+  font-weight: bold;
+  color: white;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

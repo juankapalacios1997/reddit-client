@@ -1,6 +1,5 @@
 .posts-card {
     margin-top: 8rem;
-
 }
 
 .post-container {
@@ -14,10 +13,19 @@
     width: 90%;
     font-size: 1rem;
     text-align: center;
-    background-color: orangered;
     margin-top: 1rem;
     border-radius: 2rem;
     padding: 0.5rem;
+}
+
+#light .post-body {
+    border: 2px solid black;
+    color: black
+}
+
+#dark .post-body {
+    border: 2px solid white;
+    color: white;
 }
 
 
@@ -35,6 +43,18 @@
     margin-right: 0.5rem;
 }
 
+#light .individual-post h2 {
+    color: black;
+}
+
+#light .individual-post p {
+    color: black;
+}
+
+#dark .individual-post p {
+    color: black;
+}
+
 .individual-post img {
     width: 80%;
     height: auto;
@@ -43,6 +63,18 @@
 
 .individual-post span {
     font-weight: bold;
+    
+}
+
+#light .individual-post span {
+    font-weight: bold;
+    color: black;
+    
+}
+
+#dark .individual-post span {
+    font-weight: bold;
+    color: white;
     
 }
 
@@ -55,12 +87,28 @@
     margin: 0 auto;
     display: flex;
     flex-direction: row;
+}
+
+#light .post-footer .likes {
+    color: black;
+}
+
+#light .post-footer .likes {
+    color: white;
+}
+
+#light .post-footer .likes {
     color: white;
 }
 
 .comments {
     margin: 0 auto;
+}
+
+#light .comments {
+    color: black;
+}
+
+#dark .comments {
     color: white;
-    font-size: 1rem;
-    font-weight: bold;
 }

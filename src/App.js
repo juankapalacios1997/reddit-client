@@ -33,7 +33,11 @@ function App() {
               <Posts />
             </div>
           </div>
-          <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
+          <div className='ReactSwitch'>
+            <span>{theme === 'light' ? 'Dark Mode' : 'Light Mode'}</span>
+            <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
+          </div>
+          
         </div>
         </ThemeContext.Provider>
       </Router>

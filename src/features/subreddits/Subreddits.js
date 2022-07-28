@@ -16,8 +16,8 @@ export const Subreddits = (props) => {
 
     return (
     <div className="subreddit-card">
-        <h2>Subreddits</h2>
         <div className="subreddit-container" >
+            <h2>Subreddits</h2>
             <ul className="subreddits">
             {subreddits.map((subreddit) => (
                 <Link to="/" key={subreddit.id}>
