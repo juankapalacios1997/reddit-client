@@ -1,0 +1,40 @@
+.comments-hidden {
+    display: none;
+}
+
+.comments-displayed {
+    display: block
+}
+
+.comments-container {
+    margin: 0.5rem auto
+}
+
+.comments-container .show-comments {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.comments-container .show-comments:hover {
+    text-decoration: underline;
+}
+
+.comment {
+    border: 1px solid white;
+    border-radius: 1rem;
+    margin: 0.25rem;
+}
+
+.comment p {
+    text-align: left;
+    font-size: 1.25rem;
+}
+
+.comment-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: normal;
+}

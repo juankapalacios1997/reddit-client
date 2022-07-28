@@ -1,51 +1,44 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux/es/exports';
+import { getPostComments } from '../../../api/reddit';
 
 import { dateCalculator } from '../postInfo/date-calculator/date-calculator';
+import { useState } from 'react';
 
-import { fetchComments } from './commentsSlice';
+import './comments.css';
 
 export const Comments = (props) => {
-    const { postPermalink, postComments } = props;
-    const commentsState = useSelector((state) => state.comments);
-    const { comments, loadingComments, errorComments } = commentsState;
-    const dispatch = useDispatch();
+    const { permalink, numComments } = props;
+    const [ showingComments, setShowingComments ] = useState(false);
+    const [ comments, setComments ] = useState([]);
 
-    useEffect(() => {
-        dispatch(fetchComments(postPermalink));
-        }, [dispatch, postPermalink]);
+    const onToggleComments = () => {
+        setShowingComments(!showingComments);
+        getPostComments(permalink)
+            .then(jsonComments => setComments(
+                jsonComments.map(comment => (
 
-
-    if (errorComments) {
-        return (
-            <div>
-            <h3>Error loading comments</h3>
-            </div>
-        );
-    }
-
-    if (loadingComments) {
-        return (
-            <div>
-            <p>Loading comments...</p>
-            </div>
-        );
-    }
-
-    return (
-    <div className='comments-container'>
-        <p className='comment-number'>Comments: <span>{postComments}</span></p>
-        {comments.map((comment) => {
-            return (
-                <div className='comment' key={comment.id}>
-                    <div className='comment-header'>
-                        <p className='comment-author'>{comment.author}</p>
-                        <p className='comment-date'>{dateCalculator(comment.created_utc)}</p>
+                    <div className='comment' key={comment.id}>
+                        <p>{comment.body}</p>
+                        <div className='comment-footer'>
+                            <p className='comment-author'>{comment.author}</p>
+                            <p className={'comment-date'}>{dateCalculator(comment.created_utc)}</p>
+                        </div>
                     </div>
-                    <p>{comment.body}</p>
-                </div>
-            )
-        })}
-    </div>
+
+                ))));
+
+    }
+    
+    return (
+        <div className='comments-container'>
+            <div className='comments-header' />
+            <div>
+            <p>{`Comments: ${numComments} `}</p>
+            <p><span className={'show-comments'} onClick={onToggleComments}>{!showingComments ? 'Show comments' : 'Hide comments'}</span></p>
+            </div>
+            <div className={showingComments ? 'comments-displayed' : 'comments-hidden'}>
+                {comments}
+            </div>
+        </div>
     )
-};
+}
+

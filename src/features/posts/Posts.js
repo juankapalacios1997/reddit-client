@@ -21,14 +21,15 @@ export const Posts = () => {
     const { isLoading, error, activeSubreddit } = postsState;
     const posts = useSelector(selectFilteredPosts);
     const dispatch = useDispatch();
+    
 
     useEffect(() => {
     dispatch(fetchPosts(activeSubreddit));
     }, [dispatch, activeSubreddit]);
 
-    const toggleReadMore = () => {
+    const onToggleReadMore = () => {
       setIsReadMore(!isReadMore);
-    };
+    };  
 
     if (isLoading) {
         return (
@@ -58,13 +59,13 @@ export const Posts = () => {
 
     return (
     <div className="posts-card">
-        {posts.map(post => (
+        {posts.map((post, index) => (
             <section className="post-container" key={post.id}>
                 <div className="post-body">
                     <div className="individual-post">
                         <h2>{post.title}</h2>
                         <p>{(isReadMore ? post.selftext.substring(0, 250) : post.selftext) + (isLoading && post.selftext.length > 600 ? " [...]" : "")}</p>
-                        {post.selftext.length > 600 ? <span className="read-more" onClick={toggleReadMore}>Click to see more...</span> : null}
+                        {post.selftext.length > 600 ? <span className="read-more" onClick={onToggleReadMore}>{isReadMore ? 'Read more...' : '...Read less.'} </span> : null}
                         <img src={post.url} onError={(e) => e.target.style.display = "none"} alt={post.title}/>
                     </div>
                     <div className="post-footer">
@@ -74,8 +75,8 @@ export const Posts = () => {
                         />
                       <Likes ups={post.ups}/>
                     </div>
-                    <div className={isReadMore ? 'showing-coments' : 'hidden-comments'}>
-                        <Comments post={post} postPermalink={post.permalink} postComments={post.num_comments}/>
+                    <div className='comments'>          
+                        <Comments permalink={post.permalink} numComments={post.num_comments} />
                     </div>
                   </div>
             </section>
