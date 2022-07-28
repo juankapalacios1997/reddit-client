@@ -33,22 +33,16 @@
 }
 
 .ReactSwitch {
-  margin: 1rem auto;
+  margin: auto;
+  margin-top: 1.25rem;
   display: flex;
   justify-content: center;
   align-items: center;
   width: fit-content;
 }
 
-#light .ReactSwitch {
-  border: 2px solid black;
-  border-radius: 0.5rem;
-}
-
-#dark .ReactSwitch {
-  background-color: rgb(53, 53, 53);
-  border: 2px solid white;
-  border-radius: 0.5rem;
+.ReactSwitch span {
+  margin-right: 0.75rem;
 }
 
 #light .ReactSwitch span {
